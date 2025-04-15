@@ -22,4 +22,8 @@ import { RouterLink } from 'vue-router';
     text-decoration: none;
     font-weight: bold;
 }
+.active {
+  text-decoration: underline;
+  color: #42b983;
+}
 </style>
