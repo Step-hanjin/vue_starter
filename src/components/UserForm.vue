@@ -11,13 +11,17 @@
             <input v-model.number="age" type="number" />
         </lable>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Add</button>
         <p><strong>Preview: </strong>{{ preview }}</p>
     </form>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, defineEmits } from 'vue';
+
+const emit = defineEmits<{
+    (e: 'submit', name: string, age: number): void;
+}>();
 
 const name = ref('');
 const age = ref<number | null>(null);
@@ -28,11 +32,14 @@ const preview= computed(() => {
         "Fill out the form";
 });
 
-function submit() {
-    alert(`Submitted ${preview.value}`);
-    name.value = '';
-    age.value = null;
+const handleSubmit = () => {
+    if (name.value.trim()){
+        emit('submit', name.value, age.value);
+        name.value = '';
+        name.age = null;
+    }
 }
+
 </script>
 
 <style scoped>
