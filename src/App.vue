@@ -3,17 +3,12 @@ import HelloWorld from './components/HelloWorld.vue'
 </script> -->
 
 <template>
-  <div class="container">
-    <h1>Vue Counter 🚀</h1>
-    <p>Count: {{ count }}</p>
-    <button @click="count++">Increase</button>
-  </div>
+  <Navbar/>
+  <router-view/>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const count = ref(0);
-
+import Navbar from './components/Navbar.vue'
 </script>
 
 <style scoped>
